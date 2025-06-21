@@ -1,0 +1,327 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Header Styles */
+.depop-like-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #fff; /* White background */
+    border-bottom: 1px solid #eee; /* Light grey bottom border */
+}
+
+/* Left Section: Logo */
+.header-left .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e23e57; /* Depop's pink color (approximate) */
+    text-decoration: none;
+}
+
+/* Middle Section: Search Bar (Takes up more space) */
+.header-middle {
+    flex-grow: 1; /* Allows the search bar to expand */
+    margin: 0 20px; /* Add some left and right margin */
+}
+
+.header-middle .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 500px;
+}
+
+.header-middle .search-bar input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%; /* Make the input take full width of its container */
+}
+
+.header-middle .search-bar button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.header-middle .search-bar button i {
+    font-size: 16px;
+}
+
+/* Right Section: Icons and Buttons */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.header-right a:hover {
+    color: #747071; /* Depop's pink color (approximate) on hover */
+}
+
+.header-right .sell-now {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.header-right .sell-now:hover {
+    background-color: #333;
+}
+
+.header-right a:last-child {
+    margin-left: 20px; /* Space before "Log in" */
+}
+
+
+/* Item Detail Container */
+.item-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 40px;
+}
+
+.main-photo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* spacing between thumbnails */
+  margin-top: 15px;
+  flex-wrap: wrap; /* wrap on small screens */
+}
+
+.thumbnail-photos {
+  width: 120px;  /* enlarged size */
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.thumbnail-photos:hover {
+  border: 2px solid #000;
+  transform: scale(1.05);
+}
+
+/* Details Section */
+.item-details {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-details h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+.item-details p {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Buttons */
+/* General button styling */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  width: 150px; /* Set fixed width for uniform size */
+  text-align: center;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Specific button styles */
+.buy-btn {
+  background-color: #000000;
+  color: white;
+}
+
+.buy-btn:hover {
+  background-color: #333333;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.cart-btn {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.cart-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.03);
+}
+
+.gift-btn {
+  background-color: #fa94df;
+  color: black;
+}
+
+.gift-btn:hover {
+  background-color: #f773d8;
+  transform: scale(1.03);
+}
+
+.store-btn {
+  background-color: #f9f9f9;
+  color: white;
+}
+
+.edit-btn {
+  background-color: #000000;
+  color: white;
+}
+
+.edit-btn:hover {
+    background-color: #595959;
+    color: #ffffff;
+}
+
+.login-btn {
+  background-color: #ff3366;
+  color: white;
+}
+
+.back-btn {
+   background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+/* Optional: Specific hover style for back-btn */
+.back-btn:hover {
+  background-color: #f2f2f2;
+  color: #000;
+}
+/* Footer Styles (Assuming you want to reuse the footer) */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .footer-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+footer .social-media i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+footer .social-media i:hover {
+    color: #d4a373;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-basis: auto;
+        width: 100%;
+        margin-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .sidebar ul li {
+        margin-right: 10px;
+    }
+
+    .sidebar ul li a {
+        padding: 8px 12px;
+    }
+
+    .profile-form .name-fields {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .profile-form .name-fields > div {
+        margin-bottom: 20px;
+    }
+}

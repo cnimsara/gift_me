@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Gift Box</title>
+    <link rel="stylesheet" href="/styles/checkout.css">
+    <link rel="stylesheet" href="/styles/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Section -->
+<header class="depop-like-header">
+    <div class="header-left">
+        <div class="logo">
+            <a href="/index">Giftly</a>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#"><i class="far fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        
+        <% if (isLoggedIn) { %>
+            <% if (isSeller) { %>
+                <!-- Seller is logged in -->
+                <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become Seller</a>
+            <% } %>
+            <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <!-- User is not logged in -->
+            <a href="/user">Sign up</a>
+            <a href="/signin">Log in</a>
+        <% } %>
+        </div>
+    </div>
+</header>
+
+
+  <!-- Main Customization Section -->
+<main class="checkout-container">
+    <h1>Checkout</h1>
+
+    <div class="summary-form-wrapper">
+
+        <section class="order-summary">
+            <h2>Order Summary</h2>
+            <p><strong>Box:</strong> <%= giftBox.box.name %> - Rs. <%= giftBox.box.price %></p>
+            <p><strong>Wrap:</strong> <%= giftBox.wrap.name %> - Rs. <%= giftBox.wrap.price %></p>
+            <% giftBox.items.forEach(item => { %>
+                <p><strong>Item:</strong> <%= item.name %> - Rs. <%= item.price %></p>
+            <% }) %>
+            <h3>Total: Rs. <%= giftBox.total %></h3>
+        </section>
+
+        <section class="shipping-form">
+            <h2>Shipping Information</h2>
+            <form action="/placeOrder" method="POST">
+                <input type="text" name="fullName" placeholder="Full Name" required>
+                <input type="text" name="address" placeholder="Address" required>
+                <input type="text" name="city" placeholder="City" required>
+                <input type="text" name="postalCode" placeholder="Postal Code" required>
+                <input type="text" name="phone" placeholder="Phone Number" required>
+                <button type="submit" class="btn">Place Order</button>
+            </form>
+        </section>
+    </div>
+</main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-logo"> <img src="/image/giftboxLogo.png" alt="Brand Logo"> </div>
+        <div class="social-media">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/script/chooseSeller.js"></script>
+
+</body>
+</html>
+

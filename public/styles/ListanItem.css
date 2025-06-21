@@ -1,0 +1,284 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Header Styles */
+.depop-like-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #fff; /* White background */
+    border-bottom: 1px solid #eee; /* Light grey bottom border */
+}
+
+/* Left Section: Logo */
+.header-left .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e23e57; /* Depop's pink color (approximate) */
+    text-decoration: none;
+}
+
+/* Middle Section: Search Bar (Takes up more space) */
+.header-middle {
+    flex-grow: 1; /* Allows the search bar to expand */
+    margin: 0 20px; /* Add some left and right margin */
+}
+
+.header-middle .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 500px;
+}
+
+.header-middle .search-bar input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%; /* Make the input take full width of its container */
+}
+
+.header-middle .search-bar button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.header-middle .search-bar button i {
+    font-size: 16px;
+}
+
+/* Right Section: Icons and Buttons */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.header-right a:hover {
+    color: #747071; /* Depop's pink color (approximate) on hover */
+}
+
+.header-right .sell-now {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.header-right .sell-now:hover {
+    background-color: #333;
+}
+
+.header-right a:last-child {
+    margin-left: 20px; /* Space before "Log in" */
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.photo-box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.preview {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  border: 2px dashed #ccc;
+  margin-right: 10px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 120px;
+  font-weight: bold;
+  color: #888;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  user-select: none;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 0, 0, 0.8);
+}
+.hidden {
+    display: none;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #000000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #444343;
+}
+
+.shipping-fields {
+    margin-top: 10px;
+    display: none;
+}
+
+
+/* Footer Styles (Assuming you want to reuse the footer) */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .footer-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+footer .social-media i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+footer .social-media i:hover {
+    color: #d4a373;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-basis: auto;
+        width: 100%;
+        margin-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .sidebar ul li {
+        margin-right: 10px;
+    }
+
+    .sidebar ul li a {
+        padding: 8px 12px;
+    }
+
+    .profile-form .name-fields {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .profile-form .name-fields > div {
+        margin-bottom: 20px;
+    }
+}

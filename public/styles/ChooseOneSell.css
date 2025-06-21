@@ -1,0 +1,96 @@
+
+
+.seller-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.seller-name a:hover {
+  text-decoration: underline;
+  color: #5e4a51;
+}
+.item-card {
+  position: relative;
+}
+
+.item-card::after {
+  content: attr(title);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.item-card:hover::after {
+  opacity: 1;
+}
+.seller-list {
+  margin-top: 30px;
+}
+
+.seller-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.seller-card h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.seller-items {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.item-category {
+  flex: 1;
+}
+
+.item-category h3 {
+  margin-bottom: 8px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.item-photos {
+  display: flex;
+  gap: 10px;
+}
+
+.item-photo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn:hover {
+  background-color: #000000;
+}
+
+
+

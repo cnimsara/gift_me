@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="/styles/SellerDash.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="depop-like-header">
+    <div class="header-left">
+        <div class="logo">
+            <a href="/index">Giftly</a>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#"><i class="far fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        <% if (user.isSeller) { %>
+           <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become Seller</a>
+        <% } %>
+        <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+   
+</header>
+
+<section class="dashboard">
+    <aside class="sidebar">
+        <div class="profile-pic">
+            <img src="/images/profile.png" alt="Profile Picture">
+            <h4>Seller Dashboard</h4>
+        </div>
+        <ul>
+            <li><a href="/customerDash">Profile Details</a></li>
+            <li><a href="/SellerDash" class="active">Shop Details</a></li>
+            <li><a href="#">Order</a></li>
+            <li><a href="/SellingList">Selling</a></li>
+            <li><a href="#">Sold</a></li>
+            <li><a href="#">Shipping Address</a></li>
+            <li><a href="#">Account Setting</a></li>
+        </ul>
+    </aside>
+
+    <div class="content">
+        <h2>Shop Details</h2>
+        <form class="seller-form" method="POST" action="/updateShop">
+            <label>Seller ID</label>
+            <input type="text" value="<%= sellerId %>" disabled>
+
+            <label for="shop_name">Shop Name</label>
+            <input type="text" id="shop_name" name="shop_name" value="<%= shopName %>" required>
+
+            <label for="category">Selling Category</label>
+            <select name="category" id="category" required>
+                <option value="Handmade" <%= category === 'Handmade' ? 'selected' : '' %>>Handmade</option>
+                <option value="Art" <%= category === 'Art' ? 'selected' : '' %>>Art</option>
+                <option value="Crafts" <%= category === 'Crafts' ? 'selected' : '' %>>Crafts</option>
+                <option value="Other" <%= category === 'Other' ? 'selected' : '' %>>Other</option>
+            </select>
+
+            <label for="description">Shop Description</label>
+            <textarea id="description" name="description" placeholder="Describe your shop..."><%= shopDetails %></textarea>
+
+            <label>Payment Method</label>
+            <input type="text" value="<%= paymentMethod %> **** <%= lastFourDigits %>" disabled>
+
+            <button type="submit" class="save-btn">Save Changes</button>
+
+            <% if (successMessage) { %>
+                <div class="message-box success">
+                    <p><%= successMessage %></p>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">
+        <img src="/image/giftboxLogo.png" alt="Brand Logo">
+    </div>
+    <div class="social-media">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+    </div>
+    <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+</footer>
+<script src="/script/Index.js"></script>
+
+
+</body>
+</html>

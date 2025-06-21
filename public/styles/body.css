@@ -1,0 +1,174 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Header Styles */
+.depop-like-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #fff; /* White background */
+    border-bottom: 1px solid #eee; /* Light grey bottom border */
+}
+
+/* Left Section: Logo */
+.header-left .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e23e57; /* Depop's pink color (approximate) */
+    text-decoration: none;
+}
+
+/* Middle Section: Search Bar (Takes up more space) */
+.header-middle {
+    flex-grow: 1; /* Allows the search bar to expand */
+    margin: 0 20px; /* Add some left and right margin */
+}
+
+.header-middle .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 500px;
+}
+
+.header-middle .search-bar input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%; /* Make the input take full width of its container */
+}
+
+.header-middle .search-bar button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.header-middle .search-bar button i {
+    font-size: 16px;
+}
+
+/* Right Section: Icons and Buttons */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.header-right a:hover {
+    color: #747071; /* Depop's pink color (approximate) on hover */
+}
+
+.header-right .sell-now {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.header-right .sell-now:hover {
+    background-color: #333;
+}
+
+.header-right a:last-child {
+    margin-left: 20px; /* Space before "Log in" */
+}
+/* Footer Section Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.social-media i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.social-media i:hover {
+    color: #575757;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header .logo {
+        margin-bottom: 15px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    header .search-bar {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    header .search-bar input[type="text"] {
+        width: calc(100% - 40px);
+    }
+
+    header .icons {
+        margin-top: 15px;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+}

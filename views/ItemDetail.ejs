@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>Item Detail</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/ItemDetail.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+<header class="depop-like-header">
+    <div class="header-left">
+        <div class="logo">
+            <a href="/index">Giftly</a>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#"><i class="far fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        <% if (user.isSeller) { %>
+            <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become Seller</a>
+        <% } %>
+        <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+   
+</header>
+
+ 
+
+  <div class="item-detail-container">
+  <div class="item-photos">
+  <!-- Main photo display -->
+  <img id="main-photo" class="main-photo" src="/uploads/<%= item.photo1 || item.photo2 || item.photo3 %>" alt="Main Photo" />
+
+  <!-- Thumbnails -->
+  <div class="thumbnail-container">
+    <% if (item.photo1) { %>
+      <img class="thumbnail-photos" src="/uploads/<%= item.photo1 %>" alt="Photo 1" onclick="changePhoto(this.src)" />
+    <% } %>
+    <% if (item.photo2) { %>
+      <img class="thumbnail-photos" src="/uploads/<%= item.photo2 %>" alt="Photo 2" onclick="changePhoto(this.src)" />
+    <% } %>
+    <% if (item.photo3) { %>
+      <img class="thumbnail-photos" src="/uploads/<%= item.photo3 %>" alt="Photo 3" onclick="changePhoto(this.src)" />
+    <% } %>
+  </div>
+</div>
+
+  <div class="item-details">
+    <h1><%= item.description %></h1>
+
+    <p>Category: <%= item.category %></p>
+    <p>Brand: <%= item.brand %></p>
+    <p>Condition: <%= item.itemCondition %></p>
+    <p class="price">Price: Rs <%= item.price %></p>
+
+    <% if (isSeller) { %>
+<a href="/edit/<%= item.item_id %>" class="btn edit-btn">Edit Item</a>
+    <% } %>
+
+    <% if (!isSeller && isLoggedIn) { %>
+      <form method="POST" action="/buy/<%= item.item_id %>">
+        <button type="submit" class="btn buy-btn">Buy Now</button>
+      </form>
+      <form method="POST" action="/addToCart/<%= item.item_id %>">
+        <button type="submit" class="btn cart-btn">Add to Cart</button>
+      </form>
+      <form method="POST" action="/addToGiftBox/<%= item.item_id %>">
+        <button type="submit" class="btn gift-btn">Add to Gift Box</button>
+      </form>
+      <a href="/store/<%= item.sellerUserId %>" class="btn store-btn">Go to Store</a>
+    <% } else if (!isLoggedIn) { %>
+      <p><a href="/signin" class="btn login-btn">Login to purchase</a></p>
+    <% } %>
+
+    <a href="/SellingList" class="btn back-btn">Watch Your Items</a>
+  </div>
+</div> 
+
+   <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="/image/giftboxLogo.png" alt="Brand Logo">
+        </div>
+        <div class="social-media">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+    </footer>
+    <script src="/script/itemDetail.js"></script>
+
+
+</body>
+</html>

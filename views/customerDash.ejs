@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="/styles/CustomerDashStyle.css">
+    <link rel="stylesheet" href="/styles/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+     <!-- Header Section -->
+     <header class="depop-like-header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="/index">Giftly</a> </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <input type="text" placeholder="Search for items">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="#"><i class="far fa-heart"></i></a>
+            <a href="#"><i class="fas fa-shopping-bag"></i></a>
+           
+
+    <!-- Conditional rendering based on whether the user is a seller -->
+    <% if (isSeller) { %>
+        <!-- Show "Sell Now" button if the user is a seller -->
+                <a href="/ListanItem" class="sell-now">Sell Now</a>
+    <% } else { %>
+        <!-- Show "Become a Seller" button if the user is not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become a Seller</a>
+    <% } %>
+             <!-- Conditional rendering based on login status -->
+       <!-- Sign Up / Log In buttons -->
+       <div id="auth-buttons">
+        <% if (isLoggedIn) { %>
+            <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/user">Sign up</a>
+            <a href="/signin">Log in</a>
+        <% } %>
+    </div>
+
+    <!-- Profile icon hidden initially -->
+    <div id="profile-icon" style="display: none;">
+        <a href="/profile"><i class="fas fa-user-circle"></i></a>
+    </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="dashboard">
+        <aside class="sidebar">
+            <div class="profile-pic">
+                <img src="/images/profile.png" alt="Profile Picture">
+                <h4><%= firstName %> <%= lastName %></h4>
+            </div>
+            <ul>
+                <li><a href="/customerDash" class="active">Profile Details</a></li>
+
+                <% if (isSeller) { %>
+                    <li><a href="/SellerDash" class="<%= activeTab === 'shop' ? 'active' : '' %>">Shop Details</a></li>
+                    <% } %>
+                <li><a href="#">Order</a></li>
+                <li><a href="#">Shipping Address</a></li>
+                <li><a href="#">Account Setting</a></li>
+            </ul>
+            
+        </aside>
+
+        <div class="content">
+            <h2>Profile Details</h2>
+            <form class="profile-form" method="POST" action="/updateProfile">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="<%= username %>" disabled>
+
+                <label for="email">User Email</label>
+                <input type="email" id="email" name="email" value="<%= email %>" disabled>
+
+                <div class="name-fields">
+                    <div>
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="first_name" value="<%= firstName %>">
+                    </div>
+                    <div>
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="last_name" value="<%= lastName %>">
+                    </div>
+                </div>
+
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" placeholder="Add Your Details"><%= bio %></textarea>
+
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                    <option value="Sri Lanka" <%= country === 'Sri Lanka' ? 'selected' : '' %>>Sri Lanka</option>
+                    <option value="India" <%= country === 'India' ? 'selected' : '' %>>India</option>
+                    <option value="United States" <%= country === 'United States' ? 'selected' : '' %>>United States</option>
+                </select>
+
+                <label for="paypal">Link Payment Method</label>
+                <button type="button" class="paypal-btn" onclick="window.location.href='https://www.paypal.com/signin'">Link PayPal</button>
+
+                <button type="submit" class="save-btn">Save changes</button>
+
+                <% if (successMessage) { %>
+                    <div class="message-box success">
+                        <p><%= successMessage %></p>
+                    </div>
+                <% } %>
+                
+            </form>
+            
+            <!-- Delete Account Button -->
+            <form action="/deleteAccount" method="POST" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+                <button type="submit" class="delete-btn">Delete Account</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="/images/logo.png" alt="Brand Logo">
+        </div>
+        <div class="social-media">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/script/Index.js"></script>
+
+</body>
+</html>

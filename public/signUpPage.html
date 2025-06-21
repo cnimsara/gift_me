@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sign Up</title>
+     <link rel="stylesheet" href="styles/signUpPageStyle.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+        <!-- Header Section -->
+   <header class="depop-like-header">
+     <div class="header-left">
+         <div class="logo">
+             <a href="/index">Giftly</a> </div>
+     </div>
+     
+     <div class="header-right">
+         <a href="#"><i class="far fa-heart"></i></a>
+         <a href="#"><i class="fas fa-shopping-bag"></i></a>
+         <button class="sell-now">Sell now</button>
+         <a href="/user">Sign up</a>
+         <a href="/signin">Log in</a>
+     </div>
+ </header>
+ 
+     <section class="signup-container">
+         <div class="signimg">
+            <img src="image/GiftBoxSignUp.jpg" alt="Sign Up Image">
+         </div>
+         <div class="right-side">
+            <div class="signup-form">
+              <h2>Sign Up</h2>
+              <form action="/user" method="POST">
+   
+                   <label for="username">Username</label>
+                   <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                   <label for="email">Email</label>
+                   <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                   <label for="password">Password</label>
+                   <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                   <div class="terms">
+                       <input type="checkbox" id="agree" name="agree" required>
+                       <label for="agree">I agree to the <a href="#">terms and conditions</a></label>
+                   </div>
+
+                   <button type="submit">Sign Up</button>
+
+                   <p>Already have an account? <a href="/signin">Login</a></p>
+              </form>
+            </div>
+         </div>
+     </section>
+</body>
+</html>

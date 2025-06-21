@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Gift Box</title>
+    <link rel="stylesheet" href="/styles/MultiItem..css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Section -->
+<header class="depop-like-header">
+    <div class="header-left">
+        <div class="logo">
+            <a href="/index">Giftly</a>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#"><i class="far fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        
+        <% if (isLoggedIn) { %>
+            <% if (isSeller) { %>
+                <!-- Seller is logged in -->
+               <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become Seller</a>
+            <% } %>
+            <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <!-- User is not logged in -->
+            <a href="/user">Sign up</a>
+            <a href="/signin">Log in</a>
+        <% } %>
+    </div>
+</header>
+
+
+  <!-- Main Content -->
+<main class="customization-section">
+  <h1>Explore All Seller Items</h1>
+
+  <div class="main-content-wrapper">
+    <!-- Left Column: Items -->
+    <div class="item-column">
+      <% (items || []).forEach(item => { %>
+        <div class="gift-box-card">
+          <img src="/uploads/<%= item.photo1 %>" alt="Item Image" />
+          <div class="gift-box-info">
+            <p><%= item.description ? item.description.substring(0, 50) : '' %>...</p>
+            <p>Rs. <%= item.price %></p>
+            <p style="font-size: 14px; color: #777;">From <%= item.shop_name %></p>
+          </div>
+          <form action="/multiItem/select" method="POST">
+            <input type="hidden" name="id" value="<%= item.id || item.item_id %>" />
+            <input type="hidden" name="price" value="<%= item.price %>" />
+            <input type="hidden" name="photo" value="<%= item.photo1 %>" />
+            <input type="hidden" name="name" value="<%= item.name %>" />
+            <input type="hidden" name="sellerId" value="<%= item.sellerId || item.seller_id %>" />
+            <button type="submit" class="btn">Add to Box</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+    <!-- Summary Box -->
+<aside class="summary-box">
+  <h3>Your Custom Box</h3>
+
+  <!-- Selected Boxes -->
+  <% if (customBox.boxes && customBox.boxes.length > 0) { %>
+    <% customBox.boxes.forEach(box => { %>
+      <div class="summary-row">
+        <img src="/uploads/<%= box.photo %>" alt="Selected Box" />
+        <div class="summary-details">
+          <p><%= box.description ? box.description.substring(0, 25) : '' %>...</p>
+          <p>Rs. <%= box.price %></p>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No box selected yet.</p>
+  <% } %>
+
+  <!-- Selected Wraps -->
+  <% if (customWrap.wraps && customWrap.wraps.length > 0) { %>
+  <% customWrap.wraps.forEach(wrap => { %>
+    <div class="summary-row">
+      <img src="/uploads/<%= wrap.photo %>" alt="Selected Wrap" />
+      <div class="summary-details">
+        <p><%= wrap.description ? wrap.description.substring(0, 25) : '' %>...</p>
+        <p>Rs. <%= wrap.price %></p>
+      </div>
+      <form action="/removeWrap" method="POST">
+        <input type="hidden" name="id" value="<%= wrap.id %>">
+        <button type="submit" class="btn btn-remove">Remove</button>
+      </form>
+    </div>
+  <% }) %>
+<% } else { %>
+  <p>No wrap selected yet.</p>
+<% } %>
+
+  <!-- Selected Items -->
+<% if (customBox && customBox.items && customBox.items.length > 0) { %>
+  <% customBox.items.forEach(item => { %>
+    <div class="summary-row">
+      <img src="/uploads/<%= item.photo %>" alt="Selected Item" />
+      <div class="summary-details">
+        <p><%= item.name ? item.name.substring(0, 25) : '' %>...</p>
+        <p>Rs. <%= item.price %></p>
+      </div>
+      <form action="/multiItem/remove" method="POST" style="display:inline;">
+        <input type="hidden" name="itemId" value="<%= item.id || item.item_id %>" />
+        <button type="submit" class="btn btn-remove">Remove</button>
+      </form>
+    </div>
+  <% }) %>
+<% } else { %>
+  <p>No items selected yet.</p>
+<% } %>
+
+  <hr/>
+
+  <!-- Total Calculation -->
+ <%
+  let total = 0;
+  if (customBox && customBox.boxes && customBox.boxes.length > 0) {
+    total += customBox.boxes.reduce((sum, b) => sum + (b.price || 0), 0);
+  }
+  if (customWrap && customWrap.wraps && customWrap.wraps.length > 0) {
+    total += customWrap.wraps.reduce((sum, w) => sum + (w.price || 0), 0);
+  }
+  if (customBox && customBox.items && customBox.items.length > 0) {
+    total += customBox.items.reduce((sum, i) => sum + (i.price || 0), 0);
+  }
+%>
+<p><strong>Total:</strong> Rs. <%= total %></p>
+  <% if (
+   (customBox && customBox.boxes && customBox.boxes.length > 0) &&
+(customWrap && customWrap.wraps && customWrap.wraps.length > 0) &&
+(customBox && customBox.items && customBox.items.length > 0)
+  ) { %>
+   <form action="/createGiftbox" method="POST">
+
+      <% customBox.items.forEach(item => { %>
+        <input type="hidden" name="itemIds[]" value="<%= item.id || item.item_id %>">
+        <input type="hidden" name="itemPrices[]" value="<%= item.price %>">
+        <input type="hidden" name="sellerIds[]" value="<%= item.sellerId || item.seller_id %>">
+      <% }) %>  
+      <input type="hidden" name="boxId" value="<%= customBox && customBox.boxes && customBox.boxes.length > 0 ? customBox.boxes[0].id : '' %>">
+      <input type="hidden" name="wrapId" value="<%= customWrap && customWrap.wraps && customWrap.wraps.length > 0 ? customWrap.wraps[0].id : '' %>">
+      <input type="hidden" name="totalPrice" value="<%= total %>">    
+      <button type="submit" class="btn">Create GiftBox</button>
+    </form>
+  <% } %>
+</aside>
+
+  </div>
+</main>
+ 
+    <footer>
+        <div class="footer-logo"> <img src="/image/giftboxLogo.png" alt="Brand Logo"> </div>
+        <div class="social-media">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/script/chooseSeller.js"></script>
+
+</body>
+</html>
+

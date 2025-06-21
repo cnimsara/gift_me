@@ -1,0 +1,298 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Header Styles */
+.depop-like-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #fff; /* White background */
+    border-bottom: 1px solid #eee; /* Light grey bottom border */
+}
+
+/* Left Section: Logo */
+.header-left .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e23e57; /* Depop's pink color (approximate) */
+    text-decoration: none;
+}
+
+/* Middle Section: Search Bar (Takes up more space) */
+.header-middle {
+    flex-grow: 1; /* Allows the search bar to expand */
+    margin: 0 20px; /* Add some left and right margin */
+}
+
+.header-middle .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 500px;
+}
+
+.header-middle .search-bar input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%; /* Make the input take full width of its container */
+}
+
+.header-middle .search-bar button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.header-middle .search-bar button i {
+    font-size: 16px;
+}
+
+/* Right Section: Icons and Buttons */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.header-right a:hover {
+    color: #747071; /* Depop's pink color (approximate) on hover */
+}
+
+.header-right .sell-now {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.header-right .sell-now:hover {
+    background-color: #333;
+}
+
+.header-right a:last-child {
+    margin-left: 20px; /* Space before "Log in" */
+}
+.main-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Item column grows to take more space */
+.item-column {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Summary box stays to the right */
+.summary-box {
+  flex: 1;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
+.gift-box-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s;
+}
+
+.gift-box-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.gift-box-card img {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px;
+  flex-shrink: 0; /* keep image size fixed */
+}
+
+.gift-box-info {
+  flex-grow: 1; /* takes remaining horizontal space */
+}
+
+.gift-box-info p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+.btn {
+  padding: 10px 18px;
+  border-radius: 5px; /* <- This controls the roundness */
+  margin-top: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn.buy-btn {
+    
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-left: 20px;
+  align-self: flex-start;
+ 
+}
+.buy-btn:hover {
+  background-color: #605e5e;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+
+
+/* Inside the summary row (image + text) */
+.summary-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.summary-row img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.summary-details {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Buttons inside summary box */
+.summary-box form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.summary-box form button:hover {
+  background-color: #484648;
+}
+/* Footer Styles (Assuming you want to reuse the footer) */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .footer-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+footer .social-media i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+footer .social-media i:hover {
+    color: #d4a373;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-basis: auto;
+        width: 100%;
+        margin-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .sidebar ul li {
+        margin-right: 10px;
+    }
+
+    .sidebar ul li a {
+        padding: 8px 12px;
+    }
+
+    .profile-form .name-fields {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .profile-form .name-fields > div {
+        margin-bottom: 20px;
+    }
+}

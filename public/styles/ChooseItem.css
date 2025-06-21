@@ -1,0 +1,127 @@
+
+
+/* Main Content Wrapper */
+.main-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Item Column */
+.item-column {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Summary Box */
+.summary-box {
+    flex: 1;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Gift Box Card */
+.gift-box-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+}
+
+.gift-box-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.gift-box-card img {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.gift-box-info {
+    flex-grow: 1;
+}
+
+.gift-box-info p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 18px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn.buy-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    margin-left: 20px;
+    align-self: flex-start;
+}
+
+.buy-btn:hover {
+    background-color: #605e5e;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+/* Summary Row */
+.summary-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.summary-row img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.summary-details {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Buttons inside Summary Box */
+.summary-box form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.summary-box form button:hover {
+    background-color: #484648;
+}

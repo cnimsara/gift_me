@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>List an Item</title>
+    <link rel="stylesheet" href="/styles/ListanItem.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Header Section -->
+<header class="depop-like-header">
+    <div class="header-left">
+        <div class="logo">
+            <a href="/index">Giftly</a>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#"><i class="far fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+
+        <% if (isSeller) { %>
+           <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become Seller</a>
+        <% } %>
+
+        <div id="auth-buttons">
+            <% if (isLoggedIn) { %>
+                <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <a href="/user">Sign up</a>
+                <a href="/signin">Log in</a>
+            <% } %>
+        </div>
+
+        <div id="profile-icon" style="display: none;">
+            <a href="/profile"><i class="fas fa-user-circle"></i></a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <h2>List an Item</h2>
+    <% const currentItem = typeof item !== 'undefined' ? item : null; %>
+    <form action="<%= currentItem ? `/edit/${currentItem.item_id}` : '/ListanItem' %>" method="POST" enctype="multipart/form-data">
+
+        <!-- Upload Photos -->
+        <label>Upload Photos</label>
+        <div class="photo-box">
+            <label for="photo1" class="preview" id="preview1">
+                <%- currentItem && currentItem.photo1 ? `<img src="/uploads/${currentItem.photo1}" alt="Photo 1" />` : 'Photo 1' %>
+            </label>
+            <label for="photo2" class="preview" id="preview2">
+                <%- currentItem && currentItem.photo2 ? `<img src="/uploads/${currentItem.photo2}" alt="Photo 2" />` : 'Photo 2' %>
+            </label>
+            <label for="photo3" class="preview" id="preview3">
+                <%- currentItem && currentItem.photo3 ? `<img src="/uploads/${currentItem.photo3}" alt="Photo 3" />` : 'Photo 3' %>
+            </label>
+        </div>
+
+        <input type="file" id="photo1" name="photo1" accept="image/*" class="hidden" onchange="previewImage(event, 'preview1')" />
+        <input type="file" id="photo2" name="photo2" accept="image/*" class="hidden" onchange="previewImage(event, 'preview2')" />
+        <input type="file" id="photo3" name="photo3" accept="image/*" class="hidden" onchange="previewImage(event, 'preview3')" />
+
+        <!-- Description -->
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" placeholder="Describe your item..." required><%= currentItem ? currentItem.description : '' %></textarea>
+
+        <!-- Info -->
+        <h3>Info</h3>
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+            <option value="GiftBox" <%= currentItem && currentItem.category === 'GiftBox' ? 'selected' : '' %>>Gift Box</option>
+            <option value="WrappingPaper" <%= currentItem && currentItem.category === 'WrappingPaper' ? 'selected' : '' %>>Wrapping Paper</option>
+            <option value="Handmade" <%= currentItem && currentItem.category === 'Handmade' ? 'selected' : '' %>>Handmade</option>
+            <option value="Craft" <%= currentItem && currentItem.category === 'Craft' ? 'selected' : '' %>>Craft</option>
+            <option value="Art" <%= currentItem && currentItem.category === 'Art' ? 'selected' : '' %>>Art</option>
+            <option value="Other" <%= currentItem && currentItem.category === 'Other' ? 'selected' : '' %>>Other</option>
+        </select>
+
+        <label for="brand">Brand</label>
+        <input type="text" id="brand" name="brand" value="<%= currentItem ? currentItem.brand : '' %>" required />
+
+        <label for="itemCondition">Condition</label>
+        <select id="itemCondition" name="itemCondition" required>
+            <option value="New" <%= currentItem && currentItem.itemCondition === 'New' ? 'selected' : '' %>>New</option>
+            <option value="Used" <%= currentItem && currentItem.itemCondition === 'Used' ? 'selected' : '' %>>Used</option>
+            <option value="Like New" <%= currentItem && currentItem.itemCondition === 'Like New' ? 'selected' : '' %>>Like New</option>
+        </select>
+
+        <!-- Location -->
+        <h3>Location</h3>
+        <label for="country">Country</label>
+        <select id="country" name="country" required onchange="updateCitiesAndCurrency()">
+            <option value="">Select Country</option>
+            <option value="Sri Lanka" <%= currentItem && currentItem.country === 'Sri Lanka' ? 'selected' : '' %>>Sri Lanka</option>
+            <option value="India" <%= currentItem && currentItem.country === 'India' ? 'selected' : '' %>>India</option>
+            <option value="USA" <%= currentItem && currentItem.country === 'USA' ? 'selected' : '' %>>USA</option>
+        </select>
+
+        <label for="city">City</label>
+        <select id="city" name="city" required>
+            <option value="<%= currentItem ? currentItem.city : '' %>"><%= currentItem ? currentItem.city : 'Select City' %></option>
+        </select>
+
+        <!-- Shipping -->
+        <h3>Shipping</h3>
+        <label for="shippingMethod">Shipping Method</label>
+        <select id="shippingMethod" name="shippingMethod" onchange="toggleShippingFields()" required>
+            <option value="">Select Shipping Method</option>
+            <option value="Domestic" <%= currentItem && currentItem.shippingMethod === 'Domestic' ? 'selected' : '' %>>GiftBoxDel (Domestic)</option>
+            <option value="Other" <%= currentItem && currentItem.shippingMethod === 'Other' ? 'selected' : '' %>>Other</option>
+        </select>
+
+        <!-- Domestic Fields -->
+        <div id="domesticFields" class="shipping-fields">
+            <label for="domesticCost">Shipping Cost (<span id="shippingCurrency1">Rs</span>)</label>
+            <input type="number" id="domesticCost" name="domesticCost" step="0.01" value="<%= currentItem ? currentItem.domesticCost : '' %>" />
+
+            <label for="height">Package Height (cm)</label>
+            <input type="number" id="height" name="height" step="0.01" value="<%= currentItem ? currentItem.height : '' %>" />
+
+            <label for="width">Package Width (cm)</label>
+            <input type="number" id="width" name="width" step="0.01" value="<%= currentItem ? currentItem.width : '' %>" />
+
+            <label for="weight">Package Weight (kg)</label>
+            <input type="number" id="weight" name="weight" step="0.01" value="<%= currentItem ? currentItem.weight : '' %>" />
+        </div>
+
+        <!-- Other Fields -->
+        <div id="otherFields" class="shipping-fields">
+            <label for="otherCost">Shipping Cost (<span id="shippingCurrency2">Rs</span>)</label>
+            <input type="number" id="otherCost" name="otherCost" step="0.01" value="<%= currentItem ? currentItem.otherCost : '' %>" />
+        </div>
+
+        <!-- Price -->
+        <label for="price">Price (<span id="currencySymbol">Rs</span>)</label>
+        <input type="number" id="price" name="price" step="0.01" required value="<%= currentItem ? currentItem.price : '' %>" />
+
+        <button type="submit" name="action" value="publish"><%= currentItem ? 'Update Listing' : 'List Item' %></button>
+        <% if (!currentItem) { %>
+            <button type="submit" name="action" value="draft">Save as Draft</button>
+        <% } %>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-logo">
+        <img src="/image/giftboxLogo.png" alt="Brand Logo">
+    </div>
+    <div class="social-media">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+    </div>
+    <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+</footer>
+
+<script src="/script/ListanItem.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Gift Box</title>
+    <link rel="stylesheet" href="/styles/ChooseOneSell.css">
+    <link rel="stylesheet" href="/styles/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Section -->
+<header class="depop-like-header">
+    <div class="header-left">
+        <div class="logo">
+            <a href="/index">Giftly</a>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#"><i class="far fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        
+        <% if (isLoggedIn) { %>
+            <% if (isSeller) { %>
+                <!-- Seller is logged in -->
+                <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become a Seller</a>
+            <% } %>
+            <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <!-- User is not logged in -->
+            <a href="/user">Sign up</a>
+            <a href="/signin">Log in</a>
+        <% } %>
+        </div>
+    </div>
+</header>
+
+
+  <!-- Sellers who have all categories -->
+  <section class="seller-list">
+    <% if (sellers.length === 0) { %>
+      <p>No sellers available with all categories.</p>
+    <% } else { %>
+      <% sellers.forEach(seller => { %>
+        <div class="seller-card">
+            
+          <!-- Seller name redirect -->
+            <h2 class="seller-name">
+            <a href="/ChooseBox?seller_id=<%= seller.id %>"><%= seller.name %></a>
+            </h2> 
+
+          <div class="seller-items">
+
+             <!-- Show some gift box photos -->
+            <div class="item-category">
+              <h3>Gift Boxes</h3>
+              <div class="item-photos">
+                <% seller.gift_boxes.slice(0, 3).forEach(item => { %>
+                  <img src="/uploads/<%= item.photo1 %>" alt="Gift Box" class="item-photo" />
+                <% }) %>
+              </div>
+            </div>
+            <!-- Show some wrapping paper photos -->
+            <div class="item-category">
+              <h3>Wrapping Papers</h3>
+              <div class="item-photos">
+                <% seller.wrapping_papers.slice(0, 3).forEach(item => { %>
+                  <img src="/uploads/<%= item.photo1 %>" alt="Wrapping Paper" class="item-photo" />
+                <% }) %>
+              </div>
+            </div>
+
+            <!-- Show some gifts photos -->
+            <div class="item-category">
+              <h3>Gifts</h3>
+              <div class="item-photos">
+                <% seller.gifts.slice(0, 3).forEach(item => { %>
+                  <img src="/uploads/<%= item.photo1 %>" alt="Gift" class="item-photo" />
+                <% }) %>
+              </div>
+            </div>
+
+           
+          </div>
+
+                
+         </div>
+      <% }) %>
+    <% } %>
+  </section>
+</main>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-logo"> <img src="/image/giftboxLogo.png" alt="Brand Logo"> </div>
+        <div class="social-media">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/script/chooseSeller.js"></script>
+
+</body>
+</html>
+

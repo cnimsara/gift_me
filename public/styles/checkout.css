@@ -1,0 +1,69 @@
+
+
+/* Customization Middle Section */
+
+.checkout-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.checkout-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.summary-form-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.order-summary, .shipping-form {
+    flex: 1;
+    min-width: 300px;
+}
+
+.order-summary h2, .shipping-form h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+.order-summary p, .order-summary h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.shipping-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.shipping-form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.btn {
+    background-color: #222;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #444;
+}

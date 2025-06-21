@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Gift Box</title>
+    <link rel="stylesheet" href="/styles/ChooseItem.css">
+        <link rel="stylesheet" href="/styles/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Section -->
+<header class="depop-like-header">
+    <div class="header-left">
+        <div class="logo">
+            <a href="/index">Giftly</a>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for items">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="#"><i class="far fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        
+        <% if (isLoggedIn) { %>
+            <% if (isSeller) { %>
+                <!-- Seller is logged in -->
+                <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become Seller</a>
+            <% } %>
+            <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <!-- User is not logged in -->
+            <a href="/user">Sign up</a>
+            <a href="/signin">Log in</a>
+        <% } %>
+        </div>
+    </div>
+</header>
+
+<!-- Main Section -->
+  <main class="customization-section">
+    <h1>Choose Items from <%= seller.shop_name %></h1>
+
+    <div class="main-content-wrapper">
+      <!-- Items Column -->
+      <div class="item-column">
+        <% items.forEach(item => { %>
+          <div class="gift-box-card">
+            <img src="/uploads/<%= item.photo1 %>" alt="Item Image" />
+            <div class="gift-box-info">
+              <p><%= item.description %></p>
+              <p>Rs. <%= item.price %></p>
+            </div>
+            <form action="/selectItem" method="POST">
+              <input type="hidden" name="id" value="<%= item.item_id %>" />
+              <input type="hidden" name="price" value="<%= item.price %>" />
+              <input type="hidden" name="photo" value="<%= item.photo1 %>" />
+              <input type="hidden" name="name" value="<%= item.name %>" />
+              <input type="hidden" name="sellerId" value="<%= seller.seller_id %>" />
+              <button type="submit" class="btn">Add to Box</button>
+            </form>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Summary Box (RIGHT SIDE) -->
+      <aside class="summary-box">
+        <h3>Your Custom Box</h3>
+
+        <% if (customBox.box) { %>
+          <div class="summary-row">
+            <img src="/uploads/<%= customBox.box.photo %>" alt="Selected Box" />
+            <div class="summary-details">
+              <p><%= customBox.box.description.substring(0, 25) %>...</p>
+              <p>Rs. <%= customBox.box.price %></p>
+            </div>
+          </div>
+        <% } else { %>
+          <p>No box selected yet.</p>
+        <% } %>
+
+        <% if (customBox.wrap) { %>
+          <div class="summary-row">
+            <img src="/uploads/<%= customBox.wrap.photo %>" alt="Selected Wrap" />
+            <div class="summary-details">
+              <p><%= customBox.wrap.description.substring(0, 25) %>...</p>
+              <p>Rs. <%= customBox.wrap.price %></p>
+            </div>
+          </div>
+            <form action="/createGiftbox" method="POST">
+  <!-- Hidden inputs for box and wrap -->
+  <input type="hidden" name="boxId" value="<%= customBox.box.id %>" />
+  <input type="hidden" name="wrapId" value="<%= customBox.wrap.id %>" />
+  <input type="hidden" name="totalPrice" value="<%= customBox.total %>" />
+
+  <!-- For each selected item -->
+  <% if (customBox.items && customBox.items.length) { %>
+    <% customBox.items.forEach((item, index) => { %>
+      <input type="hidden" name="itemIds" value="<%= item.id %>" />
+      <input type="hidden" name="itemPrices" value="<%= item.price %>" />
+      <input type="hidden" name="sellerIds" value="<%= seller.seller_id %>" />
+    <% }) %>
+  <% } %>
+            <button type="submit" class="btn">Create GIftBox</button>
+          </form>
+        <% } else { %>
+          <p>No wrap selected yet.</p>
+        <% } %>
+        <% if (customBox.items && customBox.items.length > 0) { %>
+        <% customBox.items.forEach(item => { %>
+            <div class="summary-row">
+            <img src="/uploads/<%= item.photo %>" alt="Selected Item" />
+            <div class="summary-details">
+                <p><%= item.name.substring(0, 25) %>...</p>
+                <p>Rs. <%= item.price %></p>
+            </div>
+            <form action="/removeItem" method="POST" style="display:inline;">
+                <input type="hidden" name="itemId" value="<%= item.id %>"/>
+                <button type="submit" class="btn btn-remove">Remove</button>
+            </form>
+            </div>
+        <% }) %>
+        <% } else { %>
+        <p>No items selected yet.</p>
+        <% } %>
+        <hr />
+        <p><strong>Total:</strong> Rs. <%= customBox.total %></p>
+      </aside>
+    </div>
+  </main>
+  
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-logo"> <img src="/image/giftboxLogo.png" alt="Brand Logo"> </div>
+        <div class="social-media">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/script/chooseSeller.js"></script>
+
+</body>
+</html>
+

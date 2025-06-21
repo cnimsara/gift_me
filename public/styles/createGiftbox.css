@@ -1,0 +1,55 @@
+
+
+
+/* Giftbox summary styling */
+
+.customization-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.giftbox-summary .summary-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.giftbox-summary .summary-details p {
+
+
+  margin: 4px 0;
+  font-size: 1rem;
+}
+
+/* Customization Middle Section */
+
+/* Container for giftbox action buttons */
+.giftbox-action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Basic button style */
+.giftbox-action-buttons .btn {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.giftbox-action-buttons .btn:hover {
+  background-color: #e65b50;
+}

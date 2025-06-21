@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Become a Seller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/becomeSeller.css">
+    <link rel="stylesheet" href="/styles/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="depop-like-header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="/index">Giftly</a>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <input type="text" placeholder="Search for items">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="#"><i class="far fa-heart"></i></a>
+            <a href="#"><i class="fas fa-shopping-bag"></i></a>
+            <div id="auth-buttons">
+                <% if (isLoggedIn) { %>
+                    <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+                    <a href="/logout">Logout</a>
+                <% } else { %>
+                    <a href="/user">Sign up</a>
+                    <a href="/signin">Log in</a>
+                <% } %>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="dashboard">
+        <div class="content">
+            <h2>Become a Seller</h2>
+            <form action="/becomeSeller" method="POST" class="profile-form">
+                <label for="shopName">Shop Name</label>
+                <input type="text" id="shopName" name="shopName" required>
+
+                <label for="category">Shop Category</label>
+                <select id="category" name="category" required>
+                    <option value="Handmade">Handmade</option>
+                    <option value="Crafts">Crafts</option>
+                    <option value="Art">Art</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="description">Shop Description</label>
+                <textarea id="description" name="description" rows="4" placeholder="Tell us about your shop..."></textarea>
+
+                <label for="paymentMethod">Payment Method</label>
+<select id="paymentMethod" name="paymentMethod" required onchange="togglePaymentOptions()">
+    <option value="">-- Select Payment Method --</option>
+    <option value="paypal">PayPal</option>
+    <option value="card">Bank Card</option>
+</select>
+
+<!-- PayPal Button -->
+<div id="paypalDiv" style="display: none;">
+    <button type="button" class="paypal-btn" onclick="window.open('https://www.paypal.com/signin', '_blank')">
+        Connect with PayPal
+    </button>
+    </button>
+</div>
+
+<!-- Bank Card Input Fields -->
+<div id="cardDiv" style="display: none;">
+    <label for="cardNumber">Card Number</label>
+    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
+
+    <label for="expiry">Expiry Date</label>
+    <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" name="cvv" placeholder="123">
+</div>
+
+                <button type="submit" class="save-btn">Submit & Become Seller</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="/image/giftboxLogo.png" alt="Brand Logo">
+        </div>
+        <div class="social-media">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/script/Index.js"></script>
+</body>
+</html>

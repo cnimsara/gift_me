@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="/styles/SellingList.css" />
+    <link rel="stylesheet" href="/styles/body.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="depop-like-header">
+    <div class="header-left">
+      <div class="logo">
+        <a href="/index">Giftly</a>
+      </div>
+    </div>
+    <div class="header-middle">
+      <div class="search-bar">
+        <input type="text" placeholder="Search for items" />
+        <button><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="#"><i class="far fa-heart"></i></a>
+      <a href="#"><i class="fas fa-shopping-bag"></i></a>
+
+      <% if (isSeller) { %>
+        <a href="/ListanItem" class="sell-now">Sell Now</a>
+            <% } else { %>
+                <!-- User is logged in but not a seller -->
+                <a href="/becomeSeller" class="sell-now">Become Seller</a>
+      <% } %>
+
+      <div id="auth-buttons">
+        <% if (isLoggedIn) { %>
+          <a href="/customerDash"><i class="fas fa-user-circle"></i> Profile</a>
+          <a href="/logout">Logout</a>
+        <% } else { %>
+          <a href="/user">Sign up</a>
+          <a href="/signin">Log in</a>
+        <% } %>
+      </div>
+
+      <div id="profile-icon" style="display: none;">
+        <a href="/profile"><i class="fas fa-user-circle"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Section -->
+  <section class="dashboard">
+    <aside class="sidebar">
+      <div class="profile-pic">
+        <img src="/images/profile.png" alt="Profile Picture" />
+        <h4><%= firstName %> <%= lastName %></h4>
+      </div>
+      <ul>
+        <li><a href="/customerDash" class="<%= activeTab === 'profile' ? 'active' : '' %>">Profile Details</a></li>
+
+        <% if (isSeller) { %>
+          <li><a href="/SellerDash" class="<%= activeTab === 'shop' ? 'active' : '' %>">Shop Details</a></li>
+        <% } %>
+
+        <li><a href="#" class="<%= activeTab === 'order' ? 'active' : '' %>">Order</a></li>
+        <li><a href="/SellingList" class="<%= activeTab === 'selling' ? 'active' : '' %>">Selling</a></li>
+        <li><a href="#" class="<%= activeTab === 'sold' ? 'active' : '' %>">Sold</a></li>
+        <li><a href="#" class="<%= activeTab === 'shipping' ? 'active' : '' %>">Shipping Address</a></li>
+        <li><a href="#" class="<%= activeTab === 'account' ? 'active' : '' %>">Account Setting</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+  <h2>Your Selling Items</h2>
+  <% if (!items || items.length === 0) { %>
+    <p>You haven't uploaded any items yet.</p>
+  <% } else { %>
+    <ul class="selling-items-list">
+      <% items.forEach(item => { %>
+        <li class="selling-item">
+        <a href="/item/<%= item.item_id %>">
+            <img src="/uploads/<%= item.photo1 %>" alt="Item photo" class="item-photo" />
+        </a>
+        <div class="item-info">
+    <h3><%= item.title %></h3>
+    <!-- Add the first 5 words of description here -->
+    <p class="description-preview"><%= item.description.split(' ').slice(0,5).join(' ') %>...</p>
+    <p>LKR <%= item.price %></p>
+  </div>
+          <div class="item-actions">
+            <a href="/edit/<%= item.item_id %>" class="btn edit-btn">Edit Item</a>
+            <form action="/delete/<%= item.item_id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display:inline;">
+              <button type="submit" class="btn delete-btn">Delete Item</button>
+            </form>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</main>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="/image/giftboxLogo.png" alt="Brand Logo" />
+    </div>
+    <div class="social-media">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+    <p>&copy; 2025 Customizable Gift Box. All Rights Reserved.</p>
+  </footer>
+
+  <script src="/script/Index.js"></script>
+</body>
+</html>

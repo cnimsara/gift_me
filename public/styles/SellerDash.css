@@ -1,0 +1,375 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Header Styles */
+.depop-like-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #fff; /* White background */
+    border-bottom: 1px solid #eee; /* Light grey bottom border */
+}
+
+/* Left Section: Logo */
+.header-left .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e23e57; /* Depop's pink color (approximate) */
+    text-decoration: none;
+}
+
+/* Middle Section: Search Bar (Takes up more space) */
+.header-middle {
+    flex-grow: 1; /* Allows the search bar to expand */
+    margin: 0 20px; /* Add some left and right margin */
+}
+
+.header-middle .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 500px;
+}
+
+.header-middle .search-bar input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%; /* Make the input take full width of its container */
+}
+
+.header-middle .search-bar button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.header-middle .search-bar button i {
+    font-size: 16px;
+}
+
+/* Right Section: Icons and Buttons */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.header-right a:hover {
+    color: #747071; /* Depop's pink color (approximate) on hover */
+}
+
+.header-right .sell-now {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.header-right .sell-now:hover {
+    background-color: #333;
+}
+
+.header-right a:last-child {
+    margin-left: 20px; /* Space before "Log in" */
+}
+
+/* "Become a Seller" Button */
+.become-seller-btn {
+    background-color: #e23e57; /* Same color as logo */
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.become-seller-btn:hover {
+    background-color: #b01e36;
+}
+
+
+/* Right Section: Icons and Buttons */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.header-right a:hover {
+    color: #e23e57;
+}
+
+.header-right .sell-now {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.header-right .sell-now:hover {
+    background-color: #333;
+}
+
+.header-right a:last-child {
+    margin-left: 20px;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    flex: 0 0 250px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px 0 0 8px;
+}
+
+.sidebar .profile-pic {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .profile-pic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .profile-pic h4 {
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #000000;
+    color: #fff;
+}
+
+.sidebar ul li a.active {
+    font-weight: 600;
+}
+
+/* Content Styles */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Seller Form Styles */
+.seller-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+.seller-form input[type="text"],
+.seller-form select,
+.seller-form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.seller-form input[type="text"]:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+.seller-form .save-btn {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.seller-form .save-btn:hover {
+    background-color: #575757;
+}
+
+.message-box {
+    background-color: transparent;
+    color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.message-box.success {
+    background-color: #80b081;
+}
+
+.delete-btn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #3f3838;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .footer-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+footer .social-media i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+footer .social-media i:hover {
+    color: #766b6b;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-basis: auto;
+        width: 100%;
+        margin-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .sidebar ul li {
+        margin-right: 10px;
+    }
+
+    .sidebar ul li a {
+        padding: 8px 12px;
+    }
+
+    .seller-form .name-fields {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .seller-form .name-fields > div {
+        margin-bottom: 20px;
+    }
+}

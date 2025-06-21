@@ -1,0 +1,184 @@
+
+/* Dashboard Styles */
+.dashboard {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    flex: 0 0 250px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px 0 0 8px;
+}
+
+.sidebar .profile-pic {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .profile-pic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .profile-pic h4 {
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #000000;
+    color: #fff;
+}
+
+.sidebar ul li a.active {
+    font-weight: 600;
+}
+
+/* Content Styles */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Profile Form Styles */
+.profile-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form select,
+.profile-form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.profile-form input[type="text"]:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+.profile-form .name-fields {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-form .name-fields > div {
+    flex: 1;
+}
+
+.profile-form textarea {
+    min-height: 100px;
+}
+
+.profile-form .paypal-btn {
+    background-color: #11100e;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.profile-form .paypal-btn:hover {
+    background-color: #1d191d;
+}
+
+.profile-form .save-btn {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    display: block; /* Add this to make the button a block-level element */
+    margin-top: 10px; 
+    margin-left: 7in;
+    
+    
+}
+
+.profile-form .save-btn:hover {
+    background-color: #696969;
+}
+
+.message-box {
+    background-color: transparent;
+    color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .message-box.success {
+    background-color: #4CAF50; /* Green for success */
+  }
+
+  .delete-btn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #4f4f4f;
+}
+
+  
